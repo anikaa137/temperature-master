@@ -30,7 +30,7 @@ function getWeatherReport (city){
     let city = document.getElementById("city");
         city.innerText = `${weather.name} ${weather.sys.country}`
         let temperature = document.getElementById('temp');
-        temperature.innerText  =  `${Math.round(weather.main.temp-273.15)}℃ `
+        temperature.innerText  =  `${Math.round(weather.main.temp-273.15)}°C `
         let weatherType = document.getElementById('weatherStatus');
         weatherType.innerText = `${weather.weather[0].description} `;
     
