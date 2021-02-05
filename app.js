@@ -10,8 +10,14 @@ const weatherApi = {
 
 const button = document.getElementById("button").addEventListener('click',function(){
     const weatherInput= document.getElementById("input-box").value; 
-    console.log(weatherInput)
+ if(weatherInput === ''){
+    alert('You must need a valid City name.')
+ }
+ else{
+    const weatherInput= document.getElementById("input-box").value; 
+    // console.log(weatherInput)
     getWeatherReport (weatherInput)
+ }
 })
 
 function getWeatherReport (city){
@@ -20,20 +26,36 @@ function getWeatherReport (city){
     .then (showWeatherReport)
 }
  function showWeatherReport (weather){
-     console.log (weather)
+    //  console.log (weather)
     let city = document.getElementById("city");
-    city.innerText = `${weather.name} ${weather.sys.country}`
-    let temperature = document.getElementById('temp');
-    temperature.innerText  =  `${Math.round(weather.main.temp-273.15)}`
-    let weatherType = document.getElementById('weatherStatus');
-    weatherType.innerText = `${weather.weather[0].description} `;
+        city.innerText = `${weather.name} ${weather.sys.country}`
+        let temperature = document.getElementById('temp');
+        temperature.innerText  =  `${Math.round(weather.main.temp-273.15)}`
+        let weatherType = document.getElementById('weatherStatus');
+        weatherType.innerText = `${weather.weather[0].description} `;
+    
+        document.getElementById('icon').setAttribute('src', `https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`);
+ }
 
-    document.getElementById('icon').setAttribute('src', `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`);
-}
+// function notFound (){
+//     let city = document.getElementById("city");
+//     city.innerText = ` `
+//     let temperature = document.getElementById('temp');
+//     temperature.innerText  =  ` `
+//     let weatherType = document.getElementById('weatherStatus');
+//     weatherType.innerText = ` `;
 
+//     document.getElementById('icon').setAttribute('src', `https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`);
+// }
 
+// let city = document.getElementById("city");
+//     city.innerText = `${weather.name} ${weather.sys.country}`
+//     let temperature = document.getElementById('temp');
+//     temperature.innerText  =  `${Math.round(weather.main.temp-273.15)}`
+//     let weatherType = document.getElementById('weatherStatus');
+//     weatherType.innerText = `${weather.weather[0].description} `;
 
-
+//     document.getElementById('icon').setAttribute('src', `https://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`);
 
 
 
